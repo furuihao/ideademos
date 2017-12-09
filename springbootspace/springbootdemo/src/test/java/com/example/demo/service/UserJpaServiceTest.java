@@ -13,32 +13,33 @@ import javax.annotation.Resource;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @WebAppConfiguration
-public class UserServiceTest {
+public class UserJpaServiceTest {
 
     @Resource
-    private UserService userSerivce;
+    private UserJpaService userJpaService;
 
     @Before
     public void setUp() {
         // 准备，清空user表
-        userSerivce.deleteAllUsers();
+        userJpaService.delAll();
     }
 
     @Test
     public void test() throws Exception {
         // 插入5个用户
-        userSerivce.create("a", 1);
-        userSerivce.create("b", 2);
-        userSerivce.create("c", 3);
-        userSerivce.create("d", 4);
-        userSerivce.create("e", 5);
+        userJpaService.save("a", 1);
+        userJpaService.save("b", 2);
+        userJpaService.save("c", 3);
+        userJpaService.save("d", 4);
+        userJpaService.save("e", 5);
+        userJpaService.save("f", 6);
         // 查数据库，应该有5个用户
-        Assert.assertEquals(5, userSerivce.getAllUsers().intValue());
+        Assert.assertEquals(6, userJpaService.getAllUsers().size());
         // 删除两个用户
-        userSerivce.deleteByName("a");
-        userSerivce.deleteByName("e");
+        userJpaService.deleteByName("a");
+        userJpaService.deleteByName("e");
         // 查数据库，应该有3个用户
-        Assert.assertEquals(3, userSerivce.getAllUsers().intValue());
+        Assert.assertEquals(4, userJpaService.getAllUsers().size());
     }
 
 }
