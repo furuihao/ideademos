@@ -7,20 +7,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import javax.annotation.Resource;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @WebAppConfiguration
 public class UserJapDaoTest {
 
-    @Resource
-    private UserDao userDao;
+//    @Resource
+//    private UserDao userDao;
 
     @Before
     public void setUp() {
         // 准备，清空user表
-        userDao.deleteAll();
+//        userDao.deleteAll();
     }
 
     @Test

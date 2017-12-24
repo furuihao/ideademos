@@ -5,7 +5,8 @@ import com.example.demo.modules.User;
 import java.util.List;
 
 public interface UserJpaService {
-    void save(String name,Integer age);
+    void save(String name, Integer age);
+
     void delAll();
 
     List<User> getAllUsers();

@@ -1,15 +1,15 @@
 package com.example.demo.modules;
 
-import javax.persistence.Entity;
+/*import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.Table;*/
 
-@Entity
-@Table(name = "user")
+/*@Entity
+@Table(name = "user")*/
 public class User {
-    @Id
-    @GeneratedValue
+/*    @Id
+    @GeneratedValue*/
     private Long id;
     private String name;
     private Integer age;
