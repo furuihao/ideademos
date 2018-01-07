@@ -18,7 +18,8 @@ import java.util.Arrays;
 public class WebLogAspect {
     private Logger logger = Logger.getLogger(getClass());
     ThreadLocal<Long> startTime = new ThreadLocal<>();
-    @Pointcut("execution(public * com.example.demo.controller..*.*(..))")
+//    @Pointcut("execution(public * com.example.demo.controller..*.*(..))")
+    @Pointcut("execution(public * com.example.demo.controller..*.*(..)) || @annotation(com.example.demo.annotations.Log)")
     public void webLog(){}
 
     @Before("webLog()")
@@ -33,8 +34,10 @@ public class WebLogAspect {
         logger.info("HTTP_METHOD : " + request.getMethod());
         logger.info("IP : " + request.getRemoteAddr());
         logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+        //方法参数值
         logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
-
+        //请求参数与值
+        logger.info("parameters:"+ request.getParameterMap());
     }
 
     @AfterReturning(returning = "ret", pointcut = "webLog()")
@@ -43,4 +46,15 @@ public class WebLogAspect {
         logger.info("RESPONSE : " + ret);
         logger.info("SPEND TIME : " + (System.currentTimeMillis()-startTime.get()));
     }
+
+    /*@Around("webLog()")
+    public void advice(ProceedingJoinPoint joinPoint){
+        System.out.println("环绕通知之开始");
+        try {
+            joinPoint.proceed();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        System.out.println("环绕通知之结束");
+    }*/
 }
