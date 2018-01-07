@@ -31,4 +31,10 @@ public class SampleController {
         map.addAttribute("host", "http://www.baidu.com");
         return "ThymeleafTest";
     }
+
+    @RequestMapping("/aopLog")
+    @ResponseBody
+    public String aopLog(String name) {
+        return "aopLog:"+name;
+    }
 }
