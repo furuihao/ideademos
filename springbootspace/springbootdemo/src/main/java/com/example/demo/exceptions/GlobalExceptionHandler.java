@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("exception", e);
         modelAndView.addObject("url", req.getRequestURL());
-        modelAndView.setViewName("error");
+        modelAndView.setViewName("error");//错误页面
         return modelAndView;
     }
 

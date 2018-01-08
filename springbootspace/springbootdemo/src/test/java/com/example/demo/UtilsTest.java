@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.modules.User;
 import org.junit.Test;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
@@ -15,6 +16,9 @@ public class UtilsTest {
 //        reader.loadBeanDefinitions(res);
         User user = (User) factory.getBean("user");
         System.out.println(user.getName());
+        User u = new User();
+        BeanUtils.copyProperties(user,u);
+        System.out.println(u.getName());
     }
 }
 

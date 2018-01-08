@@ -11,8 +11,8 @@ public class SampleController {
 
     @RequestMapping("/index")
     public String testDefaultException() throws Exception {
-//        return "index";
-        throw new Exception("测试统一异常处理");
+        return "index";
+//        throw new Exception("测试统一异常处理");
     }
 
     @RequestMapping("/testJsonMsgExceptionHandler")
