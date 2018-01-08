@@ -1,5 +1,9 @@
 package com.example.demo.service;
 
+import com.example.demo.modules.User;
+
+import java.util.List;
+
 public interface UserService {
     /**
      * 新增一个用户
@@ -26,4 +30,5 @@ public interface UserService {
      */
     void deleteAllUsers();
 
+    List<User> findByName(String name);
 }

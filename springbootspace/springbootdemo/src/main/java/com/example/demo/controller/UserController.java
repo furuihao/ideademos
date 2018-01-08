@@ -1,14 +1,19 @@
 package com.example.demo.controller;
 
 import com.example.demo.modules.User;
+import com.example.demo.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.*;
 
 @RestController
 @RequestMapping(value = "/users")     // 通过这里配置使下面的映射都在/users下
 public class UserController {
+
+    @Resource
+    private UserService userService;
 
     // 创建线程安全的Map
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
@@ -18,7 +23,7 @@ public class UserController {
     public List<User> getUserList() {
         // 处理"/users/"的GET请求，用来获取用户列表
         // 还可以通过@RequestParam从页面中传递参数来进行查询条件或者翻页信息的传递
-        List<User> r = new ArrayList<User>(users.values());
+        List<User> r = userService.findByName("kk444");
         return r;
     }
 
